@@ -12,6 +12,11 @@ public class ExampleTest {
     }
 
     @Test
-    public void test1() {assertEquals(0,0);}
+    public void shouldDisplayWelcomeMessageOnOpen()
+    {
+        BibliotecaApp app = new BibliotecaApp();
+        assertEquals(app.currentWindow.title, "Welcome Message");
+
+    }
 
 }
