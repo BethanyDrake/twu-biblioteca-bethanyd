@@ -10,4 +10,8 @@ public class ExampleTest {
     public void test() {
         assertEquals(1, 1);
     }
+
+    @Test
+    public void test1() {assertEquals(0,0);}
+
 }
