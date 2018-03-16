@@ -14,8 +14,19 @@ public class ExampleTest {
     @Test
     public void shouldDisplayWelcomeMessageOnOpen()
     {
-        BibliotecaApp app = new BibliotecaApp();
-        assertEquals(app.currentWindow.title, "Welcome Message");
+        Console c = new Console();
+        assertEquals(c.currentWindow.title, "Welcome Message");
+
+    }
+
+    @Test
+    public void shouldDisplayListOfBooksAfterWelcome()
+    {
+        Console c = new Console();
+        new WelcomeWindow(c);
+        c.currentWindow.advance();
+        assertEquals(c.currentWindow.title, "Booklist");
+
 
     }
 
