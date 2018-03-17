@@ -8,7 +8,7 @@ public class WelcomeWindow extends Window {
     {
         super(c);
         setTitle("Welcome Message");
-        setText("Welcome to Biblioteca!");
+        setText("Welcome to Biblioteca! (press ENTER to advance)");
         open();
     }
 
