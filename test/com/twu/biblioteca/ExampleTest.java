@@ -27,9 +27,10 @@ public class ExampleTest {
     {
         IOManager m = new IOManager();
         BooklistWindow window = new BooklistWindow();
+        m.currentWindow = window;
 
         String LIST_OF_BOOKS = "Harry Potter\nTwilight\n";
-        window.open();
+        //window.open();
         String output = m.getOutput();
         assertEquals(LIST_OF_BOOKS,output);
 

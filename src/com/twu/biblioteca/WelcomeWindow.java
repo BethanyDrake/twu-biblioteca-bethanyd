@@ -1,17 +1,18 @@
 package com.twu.biblioteca;
 
 public class WelcomeWindow extends Window {
-    /*
 
 
-    public WelcomeWindow(Console c)
+
+    public WelcomeWindow()
     {
-        super(c);
+        super();
         setTitle("Welcome Message");
-        setText("Welcome to Biblioteca! (press ENTER to advance)");
+        setText("Welcome!");
         open();
     }
 
+    /*
     @Override
     public void advance() {
         new BooklistWindow(this.getParent());

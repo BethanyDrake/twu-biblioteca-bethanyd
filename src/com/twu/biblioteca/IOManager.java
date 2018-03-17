@@ -3,11 +3,11 @@ package com.twu.biblioteca;
 import java.util.Scanner;
 
 public class IOManager {
-    //public Window currentWindow;
+    public Window currentWindow;
 
     public IOManager()
     {
-        //new WelcomeWindow(this);
+        currentWindow =  new WelcomeWindow();
         /*
         Scanner sc = new Scanner(System.in);
         while (true)
@@ -27,6 +27,6 @@ public class IOManager {
 
     public String getOutput()
     {
-        return "Welcome!";
+        return currentWindow.getText();
     }
 }
