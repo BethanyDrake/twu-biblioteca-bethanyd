@@ -12,22 +12,17 @@ public class ExampleTest {
     }
 
     @Test
-    public void shouldDisplayWelcomeMessageOnOpen()
+    public void shouldDisplayWelcomeMessageOnStartUp()
     {
-        Console c = new Console();
-        assertEquals(c.currentWindow.title, "Welcome Message");
+        IOManager m = new IOManager();
+
+        String output = m.getOutput();
+        assertEquals(WELCOME_MESSAGE, output);
+
+
 
     }
 
-    @Test
-    public void shouldDisplayListOfBooksAfterWelcome()
-    {
-        Console c = new Console();
-        new WelcomeWindow(c);
-        c.currentWindow.advance();
-        assertEquals(c.currentWindow.title, "Booklist");
 
-
-    }
 
 }
