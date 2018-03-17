@@ -2,13 +2,13 @@ package com.twu.biblioteca;
 
 import java.util.Scanner;
 
-public class Console {
-    public Window currentWindow;
+public class IOManager {
+    //public Window currentWindow;
 
-    public Console()
+    public IOManager()
     {
-        new WelcomeWindow(this);
-
+        //new WelcomeWindow(this);
+        /*
         Scanner sc = new Scanner(System.in);
         while (true)
         {
@@ -21,6 +21,12 @@ public class Console {
 
 
         }
+        */
 
+    }
+
+    public String getOutput()
+    {
+        return "Welcome!";
     }
 }

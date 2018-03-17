@@ -2,7 +2,7 @@ package com.twu.biblioteca;
 
 public class BooklistWindow extends Window {
 
-
+    /*
 
     public BooklistWindow(Console app) {
         super(app);
@@ -15,4 +15,5 @@ public class BooklistWindow extends Window {
     public void advance() {
 
     }
+    */
 }

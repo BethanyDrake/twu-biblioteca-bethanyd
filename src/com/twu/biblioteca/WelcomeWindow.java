@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
 public class WelcomeWindow extends Window {
-
+    /*
 
 
     public WelcomeWindow(Console c)
@@ -18,6 +18,6 @@ public class WelcomeWindow extends Window {
 
 
     }
-
+    */
 
 }

@@ -3,7 +3,7 @@ package com.twu.biblioteca;
 public abstract class Window
 {
 
-
+    /*
 
     private Console parent;
 
@@ -49,6 +49,8 @@ public abstract class Window
     public void setTitle(String title) {
         this.title = title;
     }
+
+    */
 
 
 }

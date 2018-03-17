@@ -16,6 +16,7 @@ public class ExampleTest {
     {
         IOManager m = new IOManager();
 
+        String WELCOME_MESSAGE = "Welcome!";
         String output = m.getOutput();
         assertEquals(WELCOME_MESSAGE, output);
 
