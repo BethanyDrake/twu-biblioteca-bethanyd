@@ -5,8 +5,6 @@ import java.util.Scanner;
 public class BibliotecaApp {
 
 
-
-
     public static void main(String[] args) {
 
         IOManager manager = new IOManager();

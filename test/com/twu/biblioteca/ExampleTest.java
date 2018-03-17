@@ -20,6 +20,18 @@ public class ExampleTest {
         String output = m.getOutput();
         assertEquals(WELCOME_MESSAGE, output);
 
+    }
+
+    @Test
+    public void shouldDisplayListOfBooksWhenBooklistWindowIsOpen()
+    {
+        IOManager m = new IOManager();
+        BooklistWindow window = new BooklistWindow();
+
+        String LIST_OF_BOOKS = "Harry Potter\nTwilight\n";
+        window.open();
+        String output = m.getOutput();
+        assertEquals(LIST_OF_BOOKS,output);
 
 
     }
