@@ -10,7 +10,14 @@ public class BibliotecaApp {
         IOManager manager = new IOManager();
         Scanner sc = new Scanner(System.in);
 
-        System.out.println(manager.getOutput());
+
+        while (manager.numWaitingOutputs > 0)
+        {
+            System.out.println(manager.getOutput());
+        }
+
+
+
 
 
         /*

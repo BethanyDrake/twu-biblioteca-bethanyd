@@ -3,30 +3,44 @@ package com.twu.biblioteca;
 import java.util.Scanner;
 
 public class IOManager {
+
+    public static enum Input {ADVANCE}
     public Window currentWindow;
+    public int numWaitingOutputs = 0;
+
 
     public IOManager()
     {
         currentWindow =  new WelcomeWindow();
-        /*
-        Scanner sc = new Scanner(System.in);
-        while (true)
-        {
-            String input = sc.nextLine();
-            if (input.equals(""))
-            {
-                currentWindow.advance();
-            }
+        numWaitingOutputs++;
 
 
-
-        }
-        */
 
     }
 
     public String getOutput()
     {
-        return currentWindow.getText();
+
+
+        String output = currentWindow.getText();
+
+        //do side effects
+        if (currentWindow instanceof WelcomeWindow)
+        {
+            currentWindow = new BooklistWindow();
+            numWaitingOutputs++;
+        }
+
+
+
+        numWaitingOutputs--;
+        return output;
     }
+
+    public void putInput(Input input) {
+        if (input == Input.ADVANCE) currentWindow = new BooklistWindow();
+
+
+    }
+
 }

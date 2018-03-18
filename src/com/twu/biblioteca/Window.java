@@ -15,11 +15,7 @@ public abstract class Window
 
     }
 
-    public void open()
-    {
-        System.out.println(text);
 
-    }
 
     //public abstract void advance();
 

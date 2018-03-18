@@ -22,6 +22,7 @@ public class ExampleTest {
 
     }
 
+
     @Test
     public void shouldDisplayListOfBooksWhenBooklistWindowIsOpen()
     {
@@ -34,8 +35,25 @@ public class ExampleTest {
         String output = m.getOutput();
         assertEquals(LIST_OF_BOOKS,output);
 
+    }
+
+    @Test
+    public void shouldProceedToBooklistAfterWelcomeScreenAutomatically()
+    {
+        IOManager m = new IOManager();
+        WelcomeWindow welcomeWindow = new WelcomeWindow();
+        m.currentWindow = welcomeWindow;
+        m.getOutput();
+
+        boolean isBooklistCurrentWindow = m.currentWindow instanceof BooklistWindow;
+
+        assertEquals(true, isBooklistCurrentWindow);
+        assertEquals(1, m.numWaitingOutputs);
 
     }
+
+
+
 
 
 

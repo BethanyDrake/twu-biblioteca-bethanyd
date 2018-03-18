@@ -9,7 +9,7 @@ public class WelcomeWindow extends Window {
         super();
         setTitle("Welcome Message");
         setText("Welcome!");
-        open();
+
     }
 
     /*
