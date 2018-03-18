@@ -11,9 +11,16 @@ public class BooklistWindow extends Window {
     public BooklistWindow() {
         super();
         setTitle("Booklist");
-        setText("Harry Potter\nTwilight\n");
+        setDefaultBooklist();
 
 
+    }
+
+    private void setDefaultBooklist() {
+        ArrayList<Book> booklist  = new ArrayList<Book>();
+        booklist.add(new Book("Harry Potter", "JK Rowling",1996));
+        booklist.add(new Book("Twilight", "S Meyer", 2002));
+        setBooks(booklist);
     }
 
     /*
