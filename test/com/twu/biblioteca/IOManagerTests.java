@@ -7,13 +7,20 @@ import static org.junit.Assert.assertEquals;
 
 public class IOManagerTests {
 
-    /*
+
+
     @Test
     public void invalidInputsDisplayError()
     {
+        IOManager m = new IOManager();
+        m.putInput("Hi! I'm an invalid input!");
+        String output = m.getOutput();
+        String expected = "Select a valid option!\n";
+        assertEquals(expected,output);
+
 
     }
-    */
+
 
     @Test
     public void numericalInputsAreValidIfMenuIsOpen()

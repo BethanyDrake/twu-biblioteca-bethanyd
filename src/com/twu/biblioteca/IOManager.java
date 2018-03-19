@@ -67,7 +67,7 @@ public class IOManager {
                     return true;
                 }
 
-                return true;
+
             }
         }
         return false;
@@ -89,6 +89,13 @@ public class IOManager {
 
     public void putInput(String input)
     {
+
+        if (!isValidInput(input))
+        {
+            currentWindow = new InvalidInputError();
+            numWaitingOutputs++;
+            return;
+        }
 
        putInput(Integer.parseInt(input));
 
