@@ -19,15 +19,9 @@ public class CheckoutTest {
         assertEquals(expected,isValid);
     }
 
-    @Test
-    public void checkoutTitleIsInValidIfBookIsNotListed()
-    {
-        IOManager m = new IOManager();
-        m.currentWindow = new BooklistWindow();
-        boolean isValid = m.isValidInput("checkout Lord of The Rings");
-        boolean expected = false;
-        assertEquals(expected,isValid);
-    }
+
+
+
 
     @Test
     public void checkedOutBooksShouldNoLongerBeListed()
@@ -64,6 +58,17 @@ public class CheckoutTest {
 
         assertEquals("Thankyou! Enjoy the book!\n", m.getOutput());
 
+    }
+
+    @Test
+    public void displayCheckoutFailureScreenIfBookNotAvailable()
+    {
+        IOManager m = new IOManager();
+        BooklistWindow booklistWindow = new BooklistWindow();
+        m.currentWindow = booklistWindow;
+        m.putInput("checkout Lord of the Rings");
+
+        assertEquals("That book is not available.\n", m.getOutput());
     }
 
 

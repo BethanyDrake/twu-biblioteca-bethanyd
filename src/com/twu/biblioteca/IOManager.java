@@ -47,6 +47,11 @@ public class IOManager {
             numWaitingOutputs++;
         }
 
+        else if (currentWindow instanceof FailedCheckoutWindow)
+        {
+            currentWindow = ((FailedCheckoutWindow)currentWindow).previousWindow;
+            numWaitingOutputs++;
+        }
 
 
 
@@ -110,14 +115,6 @@ public class IOManager {
 
         }
 
-        if (currentWindow instanceof BooklistWindow)
-        {
-            BooklistWindow booklistWindow = (BooklistWindow) currentWindow;
-            if (booklistWindow.isValidCheckout(input))
-            {return true;
-            }
-
-        }
 
         return false;
     }
@@ -164,9 +161,19 @@ public class IOManager {
             BooklistWindow booklistWindow = (BooklistWindow) currentWindow;
             if (booklistWindow.isValidCheckout(input))
             {
-                booklistWindow.checkout(input);
-                currentWindow = new SuccessfulCheckoutWindow(currentWindow);
-                numWaitingOutputs++;
+                System.out.println("is valid checkout yo!\n"); //TODO remove
+                if (booklistWindow.isAvailable(input.substring("checkout ".length())))
+                {
+                    //booklistWindow.checkout(input); //TODO put this back
+                    currentWindow = new SuccessfulCheckoutWindow(currentWindow);
+                    numWaitingOutputs++;
+                }
+                else
+                {
+                    currentWindow = new FailedCheckoutWindow(currentWindow);
+                    numWaitingOutputs++;
+                }
+
             }
 
         }
