@@ -51,7 +51,8 @@ public class StartUpTest {
        booklist.add(new Book("title1", "author1",2001));
        booklist.add(new Book("title2", "author2", 2002));
 
-       booklistWindow.setBooks(booklist);
+       booklistWindow.books = booklist;
+       booklistWindow.setText();
 
 
        String expected = "title1, author1, 2001\ntitle2, author2, 2002\n";

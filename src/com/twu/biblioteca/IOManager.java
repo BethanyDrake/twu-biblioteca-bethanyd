@@ -41,7 +41,7 @@ public class IOManager {
             numWaitingOutputs++;
         }
 
-        
+
 
 
 
@@ -98,7 +98,7 @@ public class IOManager {
 
         if (currentWindow instanceof BooklistWindow)
         {
-            return ((BooklistWindow)currentWindow).isValidCheckout(input);
+            return ((BooklistWindow)currentWindow).isValidCommand(input);
 
 
         }
@@ -147,45 +147,47 @@ public class IOManager {
         if (currentWindow instanceof BooklistWindow)
         {
             BooklistWindow booklistWindow = (BooklistWindow) currentWindow;
-            if (booklistWindow.isValidCheckout(input))
+            if (booklistWindow.isValidCommand(input))
             {
-                if (booklistWindow.isAvailable(input.substring("checkout ".length())))
+
+                if (input.startsWith("checkout "))
                 {
-                    //booklistWindow.checkout(input); //TODO put this back...frankly I'm not sure why it still works
-                    currentWindow = new SuccessfulCheckoutWindow(currentWindow);
-                    numWaitingOutputs++;
+                    if (booklistWindow.isAvailable(input.substring("checkout ".length())))
+                    {
+                        //booklistWindow.checkout(input); //TODO put this back...frankly I'm not sure why it still works
+                        currentWindow = new SuccessfulCheckoutWindow(currentWindow);
+                        numWaitingOutputs++;
+                    }
+                    else
+                    {
+                        currentWindow = new FailedCheckoutWindow(currentWindow);
+                        numWaitingOutputs++;
+                    }
+
                 }
-                else
+
+                if (input.startsWith("return "))
                 {
-                    currentWindow = new FailedCheckoutWindow(currentWindow);
-                    numWaitingOutputs++;
+                    String title = input.substring("return ".length());
+                    if (booklistWindow.isCheckedOut(title))
+                    {
+                        //booklistWindow.checkout(input); //TODO put this back...frankly I'm not sure why it still works
+                        booklistWindow.returnBook(title);
+                        currentWindow = new SuccessfulReturnWindow(currentWindow);
+                        numWaitingOutputs++;
+                    }
+                    else
+                    {
+                        currentWindow = new FailedReturnWindow(currentWindow);
+                        numWaitingOutputs++;
+                    }
+
                 }
+
 
             }
 
         }
-
-
-
-        /*
-
-        //do post-input updates
-        if (currentWindow instanceof BooklistWindow)
-        {
-            BooklistWindow booklistWindow = (BooklistWindow)currentWindow;
-            if (booklistWindow.pendingMessage != null)
-            {
-                currentWindow = booklistWindow.pendingMessage;
-                booklistWindow.pendingMessage = null;
-                numWaitingOutputs++;
-            }
-
-        }
-        */
-
-
-
-
 
 
 

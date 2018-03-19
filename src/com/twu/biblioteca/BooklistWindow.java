@@ -8,9 +8,11 @@ public class BooklistWindow extends Window {
     //public Window pendingMessage;
 
     public ArrayList<Book> books;
+    public ArrayList<Book> checkedOutBooks;
 
     public BooklistWindow() {
         super();
+
         setTitle("Booklist");
         setDefaultBooklist();
 
@@ -19,9 +21,13 @@ public class BooklistWindow extends Window {
 
     private void setDefaultBooklist() {
         ArrayList<Book> booklist  = new ArrayList<Book>();
+        checkedOutBooks = new ArrayList<Book>();
         booklist.add(new Book("Harry Potter", "JK Rowling",1996));
         booklist.add(new Book("Twilight", "S Meyer", 2002));
-        setBooks(booklist);
+
+        this.books = booklist;
+        setText();
+
     }
 
 
@@ -30,7 +36,14 @@ public class BooklistWindow extends Window {
         return books;
     }
 
-    public void setBooks(ArrayList<Book> books) {
+
+    public void setBooks(ArrayList<Book> booklist)
+    {
+        this.books = booklist;
+        setText();
+
+    }
+    public void setText() {
         text = "";
         for (Book b : books)
         {
@@ -42,9 +55,14 @@ public class BooklistWindow extends Window {
         this.books = books;
     }
 
-    public boolean isValidCheckout(String command)
+    public boolean isValidCommand(String command)
     {
         if (command.startsWith("checkout "))
+        {
+            return true;
+        }
+
+        if (command.startsWith("return "))
         {
             return true;
         }
@@ -55,7 +73,8 @@ public class BooklistWindow extends Window {
     public void checkout(Book book)
     {
         books.remove(book);
-        setBooks(books);
+        setText();
+        checkedOutBooks.add(book);
 
     }
 
@@ -77,17 +96,54 @@ public class BooklistWindow extends Window {
 
     }
 
+    public void returnBook(Book book)
+    {
+        checkedOutBooks.remove(book);
+        books.add(book);
+        setText();
+
+    }
+
+
+    public void returnBook(String title)
+    {
+        for (Book b : checkedOutBooks)
+        {
+            if (b.title.equals(title))
+            {
+                returnBook(b);
+                return;
+
+            }
+        }
+
+
+    }
     public boolean isAvailable(String title)
     {
         for (Book b : books)
         {
             if (b.title.equals(title))
             {
-                checkout(b);
+                checkout(b); //TODO THIS IS WHERE I DID IT!! move this to more sensible place
                 return true;
             }
         }
         return false;
+    }
+
+    public boolean isCheckedOut(String title)
+    {
+        for (Book b : checkedOutBooks)
+        {
+            if (b.title.equals(title))
+            {
+                return true;
+            }
+        }
+
+        return false;
+
     }
 
 

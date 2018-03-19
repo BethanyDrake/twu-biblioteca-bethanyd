@@ -10,7 +10,7 @@ public class CheckoutTest {
 
 
     @Test
-    public void checkoutTitleIsValidCommandFromBooklistWindowIfBookIsListed()
+    public void checkoutTitleIsValidCommandFromBooklistWindow()
     {
         IOManager m = new IOManager();
         m.currentWindow = new BooklistWindow();
@@ -19,8 +19,62 @@ public class CheckoutTest {
         assertEquals(expected,isValid);
     }
 
+    @Test
+    public void returnTitleIsValidCommandFromBooklistWindow()
+    {
+        IOManager m = new IOManager();
+        m.currentWindow = new BooklistWindow();
+        boolean isValid = m.isValidInput("return Harry Potter");
+        boolean expected = true;
+        assertEquals(expected,isValid);
+    }
 
 
+    @Test
+    public void returnTitleIsUnsuccessfulIfNotCheckedOut()
+    {
+        IOManager m = new IOManager();
+        m.currentWindow = new BooklistWindow();
+        m.putInput("return Harry Potter");
+        boolean isUnsucessful = m.currentWindow instanceof FailedReturnWindow;
+        boolean expected = true;
+        assertEquals(expected,isUnsucessful);
+    }
+
+    @Test
+    public void returnTitleIsSuccessfulIfCheckedOut()
+    {
+        IOManager m = new IOManager();
+        m.currentWindow = new BooklistWindow();
+        m.getOutput();
+        m.putInput("checkout Harry Potter");
+        m.getOutput();
+        m.putInput("return Harry Potter");
+        boolean isSuccessful = m.currentWindow instanceof SuccessfulReturnWindow;
+        boolean expected = true;
+        assertEquals(expected,isSuccessful);
+    }
+
+    @Test
+    public void returnedTitlesAreDisplayedInBooklist()
+    {
+
+        BooklistWindow booklistWindow = new BooklistWindow();
+        ArrayList<Book> booklist  = new ArrayList<Book>();
+
+
+        booklist.add(new Book("title1", "author1",2001));
+        booklistWindow.setBooks(booklist);
+
+        Book toReturn =  new Book("title2", "author2", 2002);
+
+        booklistWindow.checkedOutBooks.add(toReturn);
+        booklistWindow.returnBook(toReturn);
+        String expected = "title1, author1, 2001\ntitle2, author2, 2002\n";
+
+        assertEquals(expected, booklistWindow.getText());
+
+    }
 
 
     @Test
