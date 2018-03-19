@@ -161,10 +161,9 @@ public class IOManager {
             BooklistWindow booklistWindow = (BooklistWindow) currentWindow;
             if (booklistWindow.isValidCheckout(input))
             {
-                System.out.println("is valid checkout yo!\n"); //TODO remove
                 if (booklistWindow.isAvailable(input.substring("checkout ".length())))
                 {
-                    //booklistWindow.checkout(input); //TODO put this back
+                    //booklistWindow.checkout(input); //TODO put this back...frankly I'm not sure why it still works
                     currentWindow = new SuccessfulCheckoutWindow(currentWindow);
                     numWaitingOutputs++;
                 }
