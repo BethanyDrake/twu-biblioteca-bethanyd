@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
-public class ExampleTest {
+public class StartUpTest {
 
     @Test
     public void test() {
