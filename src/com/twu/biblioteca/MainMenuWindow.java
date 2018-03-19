@@ -7,7 +7,7 @@ public class MainMenuWindow extends Window{
     {
         super();
         setTitle("Welcome Message");
-        setText("option1\noption2\n");
+        setText("List Books\n");
 
     }
 

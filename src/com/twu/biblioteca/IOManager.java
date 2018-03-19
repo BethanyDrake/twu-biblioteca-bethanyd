@@ -37,10 +37,29 @@ public class IOManager {
         return output;
     }
 
-    public void putInput(Input input) {
-        if (input == Input.ADVANCE) currentWindow = new BooklistWindow();
 
+
+    public void putInput(int input)
+    {
+
+        if (currentWindow instanceof  MainMenuWindow)
+        {
+            if (input ==1)
+            {
+                currentWindow = new BooklistWindow();
+                numWaitingOutputs++;
+            }
+        }
 
     }
 
+
+    public void putInput(String input)
+    {
+
+       putInput(Integer.parseInt(input));
+       
+
+
+    }
 }

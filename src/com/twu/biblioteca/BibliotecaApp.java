@@ -11,24 +11,28 @@ public class BibliotecaApp {
         Scanner sc = new Scanner(System.in);
 
 
-        while (manager.numWaitingOutputs > 0)
-        {
-            System.out.println(manager.getOutput());
-        }
 
 
 
 
 
-        /*
+
+
         while (true)
         {
-            manager.getOutput();
+
+            while (manager.numWaitingOutputs > 0)
+            {
+                System.out.println(manager.getOutput());
+            }
+
+
             String input = sc.nextLine();
             manager.putInput(input);
 
+
         }
-        */
+
 
 
 
