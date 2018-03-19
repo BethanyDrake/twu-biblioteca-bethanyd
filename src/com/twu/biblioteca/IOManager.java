@@ -31,6 +31,12 @@ public class IOManager {
             numWaitingOutputs++;
         }
 
+        else if (currentWindow instanceof InvalidInputError)
+        {
+            currentWindow = ((InvalidInputError)currentWindow).previousWindow;
+            numWaitingOutputs++;
+        }
+
 
 
         numWaitingOutputs--;
@@ -92,7 +98,7 @@ public class IOManager {
 
         if (!isValidInput(input))
         {
-            currentWindow = new InvalidInputError();
+            currentWindow = new InvalidInputError(currentWindow);
             numWaitingOutputs++;
             return;
         }

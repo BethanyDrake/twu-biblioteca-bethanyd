@@ -21,6 +21,20 @@ public class IOManagerTests {
 
     }
 
+    @Test
+    public void afterDisplayErrorAutomaticallyReturnToPreviousWindow()
+    {
+
+        IOManager m = new IOManager();
+        m.currentWindow = new BooklistWindow();
+        Window previousWindow = m.currentWindow;
+
+        m.putInput("Hi! I'm an invalid input!");
+        m.getOutput();
+        assertEquals(previousWindow,m.currentWindow);
+
+    }
+
 
     @Test
     public void numericalInputsAreValidIfMenuIsOpen()
