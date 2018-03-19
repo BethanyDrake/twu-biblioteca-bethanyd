@@ -18,8 +18,6 @@ public class MenuTest {
         String expected = "List Books\n";
         assertEquals(expected,mainMenuWindow.getText());
 
-
-
     }
 
     @Test

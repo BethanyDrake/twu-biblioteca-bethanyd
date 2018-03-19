@@ -58,8 +58,15 @@ public class IOManager {
 
         if (currentWindow instanceof MainMenuWindow)
         {
-            if (isNumeric(input))
+            MainMenuWindow menu = (MainMenuWindow) currentWindow;
+            if (isNumeric(input) )
             {
+                int option = Integer.parseInt(input);
+                if (option >0 && option <=menu.numOptions)
+                {
+                    return true;
+                }
+
                 return true;
             }
         }
