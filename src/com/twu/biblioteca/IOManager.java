@@ -35,25 +35,13 @@ public class IOManager {
             numWaitingOutputs++;
         }
 
-        else if (currentWindow instanceof InvalidInputError)
+        else if (currentWindow instanceof MessageWindow)
         {
-            currentWindow = ((InvalidInputError)currentWindow).previousWindow;
+            currentWindow = ((MessageWindow)currentWindow).previousWindow;
             numWaitingOutputs++;
         }
 
-        else if (currentWindow instanceof SuccessfulCheckoutWindow)
-        {
-            currentWindow = ((SuccessfulCheckoutWindow)currentWindow).previousWindow;
-            numWaitingOutputs++;
-        }
-
-        else if (currentWindow instanceof FailedCheckoutWindow)
-        {
-            currentWindow = ((FailedCheckoutWindow)currentWindow).previousWindow;
-            numWaitingOutputs++;
-        }
-
-
+        
 
 
 

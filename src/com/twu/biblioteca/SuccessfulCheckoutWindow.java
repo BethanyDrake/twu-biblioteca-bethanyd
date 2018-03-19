@@ -1,11 +1,11 @@
 package com.twu.biblioteca;
 
-public class SuccessfulCheckoutWindow extends Window{
+public class SuccessfulCheckoutWindow extends MessageWindow{
 
     public Window previousWindow;
     public SuccessfulCheckoutWindow(Window previousWindow)
     {
-        this.previousWindow = previousWindow;
-        setText("Thankyou! Enjoy the book!\n");
+        super(previousWindow, "Thankyou! Enjoy the book!\n");
+
     }
 }

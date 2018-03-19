@@ -22,14 +22,13 @@ public class IOManagerTests {
     }
 
     @Test
-    public void afterDisplayErrorAutomaticallyReturnToPreviousWindow()
+    public void afterDisplayMessageAutomaticallyReturnTPreviousWindow()
     {
 
         IOManager m = new IOManager();
-        m.currentWindow = new BooklistWindow();
-        Window previousWindow = m.currentWindow;
 
-        m.putInput("Hi! I'm an invalid input!");
+        Window previousWindow = m.currentWindow;
+        m.currentWindow = new MessageWindow(previousWindow, "message");
         m.getOutput();
         assertEquals(previousWindow,m.currentWindow);
 
