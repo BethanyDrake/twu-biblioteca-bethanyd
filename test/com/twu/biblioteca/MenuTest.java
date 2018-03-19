@@ -9,7 +9,7 @@ public class MenuTest {
     @Test
     public void test() {
         assertEquals(1, 1);
-    }  
+    }
 
     @Test
     public void mainMenuShouldDisplayListOfOptions()

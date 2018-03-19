@@ -29,16 +29,16 @@ public class StartUpTest {
 
 
     @Test
-    public void shouldProceedToBooklistAfterWelcomeScreenAutomatically()
+    public void shouldProceedToMainMenuAfterWelcomeScreenAutomatically()
     {
         IOManager m = new IOManager();
         WelcomeWindow welcomeWindow = new WelcomeWindow();
         m.currentWindow = welcomeWindow;
         m.getOutput();
 
-        boolean isBooklistCurrentWindow = m.currentWindow instanceof BooklistWindow;
+        boolean isMainMenuCurrentWindow = m.currentWindow instanceof MainMenuWindow;
 
-        assertEquals(true, isBooklistCurrentWindow);
+        assertEquals(true, isMainMenuCurrentWindow);
         assertEquals(1, m.numWaitingOutputs);
 
     }

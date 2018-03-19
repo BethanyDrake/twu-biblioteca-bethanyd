@@ -27,7 +27,7 @@ public class IOManager {
         //do side effects
         if (currentWindow instanceof WelcomeWindow)
         {
-            currentWindow = new BooklistWindow();
+            currentWindow = new MainMenuWindow();
             numWaitingOutputs++;
         }
 
