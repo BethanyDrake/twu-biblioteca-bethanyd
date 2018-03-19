@@ -12,12 +12,6 @@ public class BibliotecaApp {
 
 
 
-
-
-
-
-
-
         while (true)
         {
 

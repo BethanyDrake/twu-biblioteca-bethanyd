@@ -62,6 +62,14 @@ public class IOManager {
     public boolean isValidInput(String input)
     {
 
+        if (currentWindow instanceof Window)
+        {
+            if (input.equals("q"))
+            {
+                return true;
+            }
+        }
+
         if (currentWindow instanceof MainMenuWindow)
         {
             MainMenuWindow menu = (MainMenuWindow) currentWindow;
@@ -103,7 +111,15 @@ public class IOManager {
             return;
         }
 
-       putInput(Integer.parseInt(input));
+
+        if (input.equals("q"))
+        {
+            currentWindow = new ExitWindow();
+            numWaitingOutputs++;
+        }
+
+        else if (isNumeric(input)) putInput(Integer.parseInt(input));
+
 
 
 
