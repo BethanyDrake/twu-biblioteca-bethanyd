@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.sun.tools.javah.Util;
+
 import java.util.Scanner;
 
 public class IOManager {
@@ -22,6 +24,8 @@ public class IOManager {
     {
 
 
+
+
         String output = currentWindow.getText();
 
         //do side effects
@@ -36,6 +40,16 @@ public class IOManager {
             currentWindow = ((InvalidInputError)currentWindow).previousWindow;
             numWaitingOutputs++;
         }
+
+        else if (currentWindow instanceof SuccessfulCheckoutWindow)
+        {
+            currentWindow = ((SuccessfulCheckoutWindow)currentWindow).previousWindow;
+            numWaitingOutputs++;
+        }
+
+
+
+
 
 
 
@@ -56,6 +70,10 @@ public class IOManager {
                 numWaitingOutputs++;
             }
         }
+
+
+
+
 
     }
 
@@ -84,6 +102,23 @@ public class IOManager {
 
             }
         }
+
+        if (currentWindow instanceof BooklistWindow)
+        {
+            return ((BooklistWindow)currentWindow).isValidCheckout(input);
+
+
+        }
+
+        if (currentWindow instanceof BooklistWindow)
+        {
+            BooklistWindow booklistWindow = (BooklistWindow) currentWindow;
+            if (booklistWindow.isValidCheckout(input))
+            {return true;
+            }
+
+        }
+
         return false;
     }
 
@@ -111,6 +146,11 @@ public class IOManager {
             return;
         }
 
+        if (isNumeric(input))
+        {
+            putInput(Integer.parseInt(input));
+            return;
+        }
 
         if (input.equals("q"))
         {
@@ -118,7 +158,40 @@ public class IOManager {
             numWaitingOutputs++;
         }
 
-        else if (isNumeric(input)) putInput(Integer.parseInt(input));
+
+        if (currentWindow instanceof BooklistWindow)
+        {
+            BooklistWindow booklistWindow = (BooklistWindow) currentWindow;
+            if (booklistWindow.isValidCheckout(input))
+            {
+                booklistWindow.checkout(input);
+                currentWindow = new SuccessfulCheckoutWindow(currentWindow);
+                numWaitingOutputs++;
+            }
+
+        }
+
+
+
+        /*
+
+        //do post-input updates
+        if (currentWindow instanceof BooklistWindow)
+        {
+            BooklistWindow booklistWindow = (BooklistWindow)currentWindow;
+            if (booklistWindow.pendingMessage != null)
+            {
+                currentWindow = booklistWindow.pendingMessage;
+                booklistWindow.pendingMessage = null;
+                numWaitingOutputs++;
+            }
+
+        }
+        */
+
+
+
+
 
 
 

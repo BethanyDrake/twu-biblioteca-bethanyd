@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class BooklistWindow extends Window {
 
 
+    public Window pendingMessage;
 
     public ArrayList<Book> books;
 
@@ -46,4 +47,46 @@ public class BooklistWindow extends Window {
         this.books = books;
     }
 
+    public boolean isValidCheckout(String command)
+    {
+        if (!command.startsWith("checkout "))
+        {
+            return false;
+        }
+
+        String title = command.substring("checkout ".length());
+        for (Book b : books)
+        {
+            if (b.title.equals(title))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void checkout(Book book)
+    {
+        books.remove(book);
+        setBooks(books);
+        pendingMessage = new SuccessfulCheckoutWindow(this);
+    }
+
+    public void checkout(String input) {
+        if (!input.startsWith("checkout "))
+        {
+            return;
+        }
+
+        String title = input.substring("checkout ".length());
+        for (Book b : books)
+        {
+            if (b.title.equals(title))
+            {
+                checkout(b);
+                return;
+            }
+        }
+
+    }
 }

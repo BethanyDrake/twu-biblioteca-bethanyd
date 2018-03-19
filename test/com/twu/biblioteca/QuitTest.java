@@ -9,7 +9,7 @@ public class QuitTest {
 
 
     @Test
-    public void QuittingFromWindowCausesExitScreenToOccur()
+    public void QuittingFromWindowCausesExitScreenToDisplay()
     {
         IOManager m = new IOManager();
         m.currentWindow = new BooklistWindow();
@@ -22,6 +22,7 @@ public class QuitTest {
 
 
     }
+
 
     @Test
     public void qIsValidCommand()
