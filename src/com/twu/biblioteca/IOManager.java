@@ -53,12 +53,38 @@ public class IOManager {
 
     }
 
+    public boolean isValidInput(String input)
+    {
+
+        if (currentWindow instanceof MainMenuWindow)
+        {
+            if (isNumeric(input))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isNumeric(String string)
+    {
+        if (string == "") return false;
+        for (char c : string.toCharArray())
+        {
+            if (!Character.isDigit(c))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
 
     public void putInput(String input)
     {
 
        putInput(Integer.parseInt(input));
-       
+
 
 
     }
