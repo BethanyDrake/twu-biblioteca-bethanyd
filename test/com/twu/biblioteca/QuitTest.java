@@ -13,29 +13,17 @@ public class QuitTest {
     {
         IOManager m = new IOManager();
         m.currentWindow = new BooklistWindow();
-        m.putInput("q");
+        m.putInput("quit");
 
-        String output = m.getOutput();
-        String expected = "Goodbye!\n";
+        boolean exiting = m.currentWindow instanceof ExitWindow;
 
-        assertEquals(expected,output);
-
-
-    }
-
-
-    @Test
-    public void qIsValidCommand()
-    {
-        IOManager m = new IOManager();
-        m.currentWindow = new BooklistWindow();
-        boolean qIsValid = m.isValidInput("q");
-
-        boolean expected = true;
-
-        assertEquals(expected, qIsValid);
+        assertEquals(true,exiting);
 
 
     }
+
+
+
+
 
 }

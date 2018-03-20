@@ -7,28 +7,28 @@ public class MainMenuWindow extends Window{
     public int numOptions = 1;
     public MainMenuWindow()
     {
-        super();
 
-        setText("List Books\n");
+        setText("(1) List Books\n");
 
     }
 
     @Override
-    public boolean isValidCommand(String input) {
-
-
-        if (isNumeric(input) )
+    public Window putInput(String input)
+    {
+        if (isNumeric(input))
         {
-            int option = Integer.parseInt(input);
-            if (option >0 && option <=numOptions)
+            int optionSelected = Integer.parseInt(input);
+
+            if (optionSelected ==1)
             {
-                return true;
+                return new BooklistWindow();
+
             }
 
-
         }
-        return super.isValidCommand(input);
+        return super.putInput(input);
     }
+
 
     private boolean isNumeric(String string)
     {

@@ -11,8 +11,6 @@ public class BooklistWindow extends Window {
     public ArrayList<Book> checkedOutBooks;
 
     public BooklistWindow() {
-        super();
-
 
         setDefaultBooklist();
 
@@ -56,22 +54,50 @@ public class BooklistWindow extends Window {
     }
 
     @Override
-    public boolean isValidCommand(String command)
+    public Window putInput(String input)
     {
-        if (super.isValidCommand(command)) return true;
 
-        if (command.startsWith("checkout "))
+        if (input.startsWith("checkout "))
         {
-            return true;
+
+            String title = input.substring("checkout ".length());
+
+            if (isAvailable(title))
+            {
+
+                checkout(title);
+                return new SuccessfulCheckoutWindow(this);
+
+            }
+            else
+            {
+                return new FailedCheckoutWindow(this);
+
+            }
+
         }
 
-        if (command.startsWith("return "))
+        if (input.startsWith("return "))
         {
-            return true;
-        }
+            String title = input.substring("return ".length());
+            if (isCheckedOut(title))
+            {
 
-        return false;
+                returnBook(title);
+                return new SuccessfulReturnWindow(this);
+
+            }
+            else
+            {
+                return new FailedReturnWindow(this);
+
+            }
+
+        }
+        return super.putInput(input);
     }
+
+
 
     public void checkout(Book book)
     {
@@ -81,13 +107,8 @@ public class BooklistWindow extends Window {
 
     }
 
-    public void checkout(String input) {
-        if (!input.startsWith("checkout "))
-        {
-            return;
-        }
+    public void checkout(String title) {
 
-        String title = input.substring("checkout ".length());
         for (Book b : books)
         {
             if (b.title.equals(title))
@@ -128,7 +149,7 @@ public class BooklistWindow extends Window {
         {
             if (b.title.equals(title))
             {
-                checkout(b); //TODO THIS IS WHERE I DID IT!! move this to more sensible place
+
                 return true;
             }
         }

@@ -15,7 +15,7 @@ public class MenuTest {
     public void mainMenuShouldDisplayOnlyListBooksOption()
     {
         MainMenuWindow mainMenuWindow = new MainMenuWindow();
-        String expected = "List Books\n";
+        String expected = "(1) List Books\n";
         assertEquals(expected,mainMenuWindow.getText());
 
     }

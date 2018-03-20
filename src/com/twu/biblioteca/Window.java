@@ -7,8 +7,6 @@ public abstract class Window
     String text;
 
 
-
-
     public Window()
     {
 
@@ -25,10 +23,12 @@ public abstract class Window
     }
 
 
-    public boolean isValidCommand(String input)
+    public Window putInput(String input)
     {
-        if (input.equals("q")) return true;
-        return false;
+        if (input.equals("quit")) return new ExitWindow();
+        return new InvalidInputError(this);
     }
+
+
 }
 

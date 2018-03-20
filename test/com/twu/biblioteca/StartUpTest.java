@@ -25,9 +25,6 @@ public class StartUpTest {
 
     }
 
-
-
-
     @Test
     public void shouldProceedToMainMenuAfterWelcomeScreenAutomatically()
     {

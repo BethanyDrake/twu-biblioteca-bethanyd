@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import org.junit.Test;
+import sun.applet.Main;
 
 
 import static org.junit.Assert.assertEquals;
@@ -35,46 +36,31 @@ public class IOManagerTests {
     }
 
 
+
+    private boolean isValidInput(Window window, String input)
+    {
+        return !(window.putInput(input) instanceof InvalidInputError);
+    }
+
     @Test
     public void numericalInputsAreValidIfMenuIsOpen()
     {
-        IOManager m = new IOManager();
-        m.currentWindow = new MainMenuWindow();
-        boolean isValid = m.isValidInput("1");
+
+        boolean isValid = isValidInput(new MainMenuWindow(), "1");
         boolean expected = true;
         assertEquals(expected, isValid);
     }
 
-    @Test
-    public void nonNumericalInputsAreInvalid()
-    {
-        IOManager m = new IOManager();
-        boolean isValid = m.isValidInput("hi");
-        boolean expected = false;
-        assertEquals(expected, isValid);
-    }
-
-    @Test
-    public void noInputsAreValidIfNoMenuIsOpen()
-    {
-        IOManager m = new IOManager();
-        m.currentWindow = new WelcomeWindow();
-        boolean isValid = m.isValidInput("1");
-        boolean expected = false;
-        assertEquals(expected,isValid);
-
-
-    }
 
     @Test
     public void numericalInputsAreInvalidIfNoOptionHasThatNumber()
     {
-        IOManager m = new IOManager();
-        m.currentWindow = new MainMenuWindow();
-        boolean isValid = m.isValidInput("73");
+
+        boolean isValid = isValidInput(new MainMenuWindow(), "73");
         boolean expected = false;
         assertEquals(expected,isValid);
     }
+
 
 
 }

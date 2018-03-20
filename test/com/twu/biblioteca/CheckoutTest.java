@@ -12,19 +12,22 @@ public class CheckoutTest {
     @Test
     public void checkoutTitleIsValidCommandFromBooklistWindow()
     {
-        IOManager m = new IOManager();
-        m.currentWindow = new BooklistWindow();
-        boolean isValid = m.isValidInput("checkout Harry Potter");
+
+        BooklistWindow booklistWindow = new BooklistWindow();
+        boolean isValid = !(booklistWindow.putInput("checkout Harry Potter") instanceof InvalidInputError);
         boolean expected = true;
         assertEquals(expected,isValid);
     }
 
+
+
     @Test
     public void returnTitleIsValidCommandFromBooklistWindow()
     {
-        IOManager m = new IOManager();
-        m.currentWindow = new BooklistWindow();
-        boolean isValid = m.isValidInput("return Harry Potter");
+
+        BooklistWindow booklistWindow = new BooklistWindow();
+        boolean isValid = !(booklistWindow.putInput("return Harry Potter") instanceof InvalidInputError);
+
         boolean expected = true;
         assertEquals(expected,isValid);
     }
@@ -33,13 +36,14 @@ public class CheckoutTest {
     @Test
     public void returnTitleIsUnsuccessfulIfNotCheckedOut()
     {
-        IOManager m = new IOManager();
-        m.currentWindow = new BooklistWindow();
-        m.putInput("return Harry Potter");
-        boolean isUnsucessful = m.currentWindow instanceof FailedReturnWindow;
+
+        BooklistWindow booklistWindow = new BooklistWindow();
+
+        boolean isUnsuccessful= (booklistWindow .putInput("return Harry Potter")instanceof FailedReturnWindow);
         boolean expected = true;
-        assertEquals(expected,isUnsucessful);
+        assertEquals(expected,isUnsuccessful);
     }
+
 
     @Test
     public void returnTitleIsSuccessfulIfCheckedOut()
@@ -124,6 +128,7 @@ public class CheckoutTest {
 
         assertEquals("That book is not available.\n", m.getOutput());
     }
+
 
 
 }

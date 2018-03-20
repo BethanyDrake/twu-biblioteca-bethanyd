@@ -12,13 +12,6 @@ public class WelcomeWindow extends Window {
 
     }
 
-    /*
-    @Override
-    public void advance() {
-        new BooklistWindow(this.getParent());
 
-
-    }
-    */
 
 }
