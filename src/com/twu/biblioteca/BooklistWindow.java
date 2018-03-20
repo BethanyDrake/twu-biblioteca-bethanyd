@@ -13,7 +13,7 @@ public class BooklistWindow extends Window {
     public BooklistWindow() {
         super();
 
-        setTitle("Booklist");
+
         setDefaultBooklist();
 
 
@@ -55,8 +55,11 @@ public class BooklistWindow extends Window {
         this.books = books;
     }
 
+    @Override
     public boolean isValidCommand(String command)
     {
+        if (super.isValidCommand(command)) return true;
+
         if (command.startsWith("checkout "))
         {
             return true;

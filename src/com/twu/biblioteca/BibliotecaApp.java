@@ -14,20 +14,16 @@ public class BibliotecaApp {
 
         while (true)
         {
-
             while (manager.numWaitingOutputs > 0)
             {
                 System.out.println(manager.getOutput());
             }
-
 
             String input = sc.nextLine();
             manager.putInput(input);
 
 
         }
-
-
 
 
 

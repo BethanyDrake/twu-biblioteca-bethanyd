@@ -3,7 +3,7 @@ package com.twu.biblioteca;
 public abstract class Window
 {
 
-    String title;
+
     String text;
 
 
@@ -11,23 +11,10 @@ public abstract class Window
 
     public Window()
     {
-        //this.parent = c;
+
 
     }
 
-
-
-    //public abstract void advance();
-
-
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     public String getText() {
         return text;
@@ -37,5 +24,11 @@ public abstract class Window
         this.text = text;
     }
 
+
+    public boolean isValidCommand(String input)
+    {
+        if (input.equals("q")) return true;
+        return false;
+    }
 }
 

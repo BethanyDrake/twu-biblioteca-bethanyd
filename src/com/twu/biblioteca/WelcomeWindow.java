@@ -7,7 +7,7 @@ public class WelcomeWindow extends Window {
     public WelcomeWindow()
     {
         super();
-        setTitle("Welcome Message");
+
         setText("Welcome!");
 
     }

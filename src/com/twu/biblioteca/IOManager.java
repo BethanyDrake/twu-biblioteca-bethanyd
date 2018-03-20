@@ -16,8 +16,6 @@ public class IOManager {
         currentWindow =  new WelcomeWindow();
         numWaitingOutputs++;
 
-
-
     }
 
     public String getOutput()
@@ -41,11 +39,6 @@ public class IOManager {
             numWaitingOutputs++;
         }
 
-
-
-
-
-
         numWaitingOutputs--;
         return output;
     }
@@ -64,47 +57,14 @@ public class IOManager {
             }
         }
 
-
-
-
-
     }
 
     public boolean isValidInput(String input)
     {
 
-        if (currentWindow instanceof Window)
-        {
-            if (input.equals("q"))
-            {
-                return true;
-            }
-        }
-
-        if (currentWindow instanceof MainMenuWindow)
-        {
-            MainMenuWindow menu = (MainMenuWindow) currentWindow;
-            if (isNumeric(input) )
-            {
-                int option = Integer.parseInt(input);
-                if (option >0 && option <=menu.numOptions)
-                {
-                    return true;
-                }
+        return currentWindow.isValidCommand(input);
 
 
-            }
-        }
-
-        if (currentWindow instanceof BooklistWindow)
-        {
-            return ((BooklistWindow)currentWindow).isValidCommand(input);
-
-
-        }
-
-
-        return false;
     }
 
     private boolean isNumeric(String string)
@@ -124,7 +84,8 @@ public class IOManager {
     public void putInput(String input)
     {
 
-        if (!isValidInput(input))
+
+        if (!currentWindow.isValidCommand(input))
         {
             currentWindow = new InvalidInputError(currentWindow);
             numWaitingOutputs++;
