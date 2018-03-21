@@ -2,41 +2,19 @@ package com.twu.biblioteca;
 
 import java.util.ArrayList;
 
-public class BooklistWindow extends ItemListWindow {
+public class ItemListWindow extends Window {
 
+    public ArrayList<Item> items;
+    public ArrayList<Item> checkedOutItems;
 
-    //public Window pendingMessage;
+    public ItemListWindow() {
 
-    private void setDefaultBooklist() {
-        ArrayList<Item> booklist  = new ArrayList<Item>();
-        checkedOutItems = new ArrayList<Item>();
-        booklist.add(new Book("Harry Potter", "JK Rowling",1996));
-        booklist.add(new Book("Twilight", "S Meyer", 2002));
-
-        this.items = booklist;
-        setText();
-
-    }
-
-    public BooklistWindow() {
-
-        setDefaultBooklist();
+        //setDefaultBooklist();
 
 
     }
 
     /*
-
-    public ArrayList<Book> books;
-    public ArrayList<Book> checkedOutBooks;
-
-    public BooklistWindow() {
-
-        setDefaultBooklist();
-
-
-    }
-
     private void setDefaultBooklist() {
         ArrayList<Book> booklist  = new ArrayList<Book>();
         checkedOutBooks = new ArrayList<Book>();
@@ -47,30 +25,28 @@ public class BooklistWindow extends ItemListWindow {
         setText();
 
     }
+    */
 
 
 
-    public ArrayList<Book> getBooks() {
-        return books;
-    }
 
-
-    public void setBooks(ArrayList<Book> booklist)
-    {
-        this.books = booklist;
-        setText();
-
-    }
     public void setText() {
         text = "";
-        for (Book b : books)
+        for (Item item : items)
         {
-            text += b.title+", " + b.author + ", " + b.year + "\n";
+
+            text += item.toString() + "\n";
+            //text += b.title+", " + b.author + ", " + b.year + "\n";
 
         }
 
+    }
 
-        this.books = books;
+    public void setItems(ArrayList<Item> itemList)
+    {
+        this.items = itemList;
+        setText();
+
     }
 
     @Override
@@ -119,31 +95,31 @@ public class BooklistWindow extends ItemListWindow {
 
 
 
-    public void checkout(Book book)
+    public void checkout(Item item)
     {
-        books.remove(book);
+        items.remove(item);
         setText();
-        checkedOutBooks.add(book);
+        checkedOutItems.add(item);
 
     }
 
     public void checkout(String title) {
 
-        for (Book b : books)
+        for (Item i : items)
         {
-            if (b.title.equals(title))
+            if (i.title.equals(title))
             {
-                checkout(b);
+                checkout(i);
                 return;
             }
         }
 
     }
 
-    public void returnBook(Book book)
+    public void returnItem(Item item)
     {
-        checkedOutBooks.remove(book);
-        books.add(book);
+        checkedOutItems.remove(item);
+        items.add(item);
         setText();
 
     }
@@ -151,11 +127,11 @@ public class BooklistWindow extends ItemListWindow {
 
     public void returnBook(String title)
     {
-        for (Book b : checkedOutBooks)
+        for (Item i : checkedOutItems)
         {
-            if (b.title.equals(title))
+            if (i.title.equals(title))
             {
-                returnBook(b);
+                returnItem(i);
                 return;
 
             }
@@ -165,9 +141,9 @@ public class BooklistWindow extends ItemListWindow {
     }
     public boolean isAvailable(String title)
     {
-        for (Book b : books)
+        for (Item i : items)
         {
-            if (b.title.equals(title))
+            if (i.title.equals(title))
             {
 
                 return true;
@@ -178,9 +154,9 @@ public class BooklistWindow extends ItemListWindow {
 
     public boolean isCheckedOut(String title)
     {
-        for (Book b : checkedOutBooks)
+        for (Item i : checkedOutItems)
         {
-            if (b.title.equals(title))
+            if (i.title.equals(title))
             {
                 return true;
             }
@@ -189,8 +165,6 @@ public class BooklistWindow extends ItemListWindow {
         return false;
 
     }
-
-*/
 
 
 

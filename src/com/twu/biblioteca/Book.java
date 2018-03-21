@@ -1,8 +1,8 @@
 package com.twu.biblioteca;
 
-public class Book {
+public class Book extends Item {
 
-    public String title;
+
     public String author;
     public int year;
 
@@ -11,6 +11,11 @@ public class Book {
         this.title = title;
         this.author = author;
         this.year = year;
+    }
+
+    public String toString()
+    {
+        return title + ", " + author + ", " + year;
     }
 
 }

@@ -59,21 +59,22 @@ public class CheckoutTest {
         assertEquals(expected,isSuccessful);
     }
 
+
     @Test
     public void returnedTitlesAreDisplayedInBooklist()
     {
 
         BooklistWindow booklistWindow = new BooklistWindow();
-        ArrayList<Book> booklist  = new ArrayList<Book>();
+        ArrayList<Item> booklist  = new ArrayList<Item>();
 
 
         booklist.add(new Book("title1", "author1",2001));
-        booklistWindow.setBooks(booklist);
+        booklistWindow.setItems(booklist);
 
         Book toReturn =  new Book("title2", "author2", 2002);
 
-        booklistWindow.checkedOutBooks.add(toReturn);
-        booklistWindow.returnBook(toReturn);
+        booklistWindow.checkedOutItems.add(toReturn);
+        booklistWindow.returnItem(toReturn);
         String expected = "title1, author1, 2001\ntitle2, author2, 2002\n";
 
         assertEquals(expected, booklistWindow.getText());
@@ -81,18 +82,19 @@ public class CheckoutTest {
     }
 
 
+
     @Test
     public void checkedOutBooksShouldNoLongerBeListed()
     {
 
         BooklistWindow booklistWindow = new BooklistWindow();
-        ArrayList<Book> booklist  = new ArrayList<Book>();
+        ArrayList<Item> booklist  = new ArrayList<Item>();
 
         Book toCheckout =  new Book("title2", "author2", 2002);
         booklist.add(new Book("title1", "author1",2001));
         booklist.add(toCheckout);
         booklist.add(new Book("title3", "author3", 2003));
-        booklistWindow.setBooks(booklist);
+        booklistWindow.setItems(booklist);
 
         booklistWindow.checkout(toCheckout);
 
@@ -102,6 +104,7 @@ public class CheckoutTest {
 
 
     }
+
 
 
 
