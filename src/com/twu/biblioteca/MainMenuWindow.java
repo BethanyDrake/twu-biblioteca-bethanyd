@@ -31,6 +31,7 @@ public class MainMenuWindow extends Window{
         for (Option opt : options)
         {
             text += "("+i+") " + opt.text + "\n";
+            i++;
         }
         super.setText(text);
 
