@@ -17,8 +17,9 @@ public class MovieListWindow extends ItemListWindow {
 
     }
 
-    public MovieListWindow() {
+    public MovieListWindow(String user) {
 
+        super(user);
         setDefaultMovieListlist();
 
 

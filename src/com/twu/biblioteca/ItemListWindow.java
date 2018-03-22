@@ -7,7 +7,12 @@ public class ItemListWindow extends Window {
     public ArrayList<Item> items;
     public ArrayList<Item> checkedOutItems;
 
-    public ItemListWindow() {
+    public boolean loggedIn;
+
+    public ItemListWindow(String user) {
+
+        loggedIn = false;
+        if (user != null) loggedIn = true;
 
         //setDefaultBooklist();
 
@@ -52,6 +57,8 @@ public class ItemListWindow extends Window {
     @Override
     public Window putInput(String input)
     {
+
+        if (!loggedIn) return super.putInput(input);
 
         if (input.startsWith("checkout "))
         {

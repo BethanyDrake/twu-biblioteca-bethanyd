@@ -47,7 +47,7 @@ public class AccountsTest {
 
     }
 
-    /*
+
 
 
     @Test public void libraryNumbersOfIncorrectLengthAreInvalid()
@@ -88,7 +88,7 @@ public class AccountsTest {
 
     }
 
-    */
+
     @Test
     public void afterEnteringAccountNumberOnlyCorrectPasswordsAreValid()
     {

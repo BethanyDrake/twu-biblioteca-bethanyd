@@ -12,7 +12,7 @@ public class QuitTest {
     public void QuittingFromWindowCausesExitScreenToDisplay()
     {
         IOManager m = new IOManager();
-        m.currentWindow = new BooklistWindow();
+        m.currentWindow = new BooklistWindow(null);
         m.putInput("quit");
 
         boolean exiting = m.currentWindow instanceof ExitWindow;

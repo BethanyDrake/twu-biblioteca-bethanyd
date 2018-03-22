@@ -10,10 +10,10 @@ public class CheckoutTest {
 
 
     @Test
-    public void checkoutTitleIsValidCommandFromBooklistWindow()
+    public void checkoutTitleIsValidCommandFromBooklistWindowIfLoggedIn()
     {
 
-        BooklistWindow booklistWindow = new BooklistWindow();
+        BooklistWindow booklistWindow = new BooklistWindow("111-1111");
         boolean isValid = !(booklistWindow.putInput("checkout Harry Potter") instanceof InvalidInputError);
         boolean expected = true;
         assertEquals(expected,isValid);
@@ -25,7 +25,7 @@ public class CheckoutTest {
     public void returnTitleIsValidCommandFromBooklistWindow()
     {
 
-        BooklistWindow booklistWindow = new BooklistWindow();
+        BooklistWindow booklistWindow = new BooklistWindow("111-1111");
         boolean isValid = !(booklistWindow.putInput("return Harry Potter") instanceof InvalidInputError);
 
         boolean expected = true;
@@ -37,7 +37,7 @@ public class CheckoutTest {
     public void returnTitleIsUnsuccessfulIfNotCheckedOut()
     {
 
-        BooklistWindow booklistWindow = new BooklistWindow();
+        BooklistWindow booklistWindow = new BooklistWindow("111-1111");
 
         boolean isUnsuccessful= (booklistWindow .putInput("return Harry Potter")instanceof FailedReturnWindow);
         boolean expected = true;
@@ -49,7 +49,7 @@ public class CheckoutTest {
     public void returnTitleIsSuccessfulIfCheckedOut()
     {
         IOManager m = new IOManager();
-        m.currentWindow = new BooklistWindow();
+        m.currentWindow = new BooklistWindow("111-1111");
         m.getOutput();
         m.putInput("checkout Harry Potter");
         m.getOutput();
@@ -64,7 +64,7 @@ public class CheckoutTest {
     public void returnedTitlesAreDisplayedInBooklist()
     {
 
-        BooklistWindow booklistWindow = new BooklistWindow();
+        BooklistWindow booklistWindow = new BooklistWindow(null);
         ArrayList<Item> booklist  = new ArrayList<Item>();
 
 
@@ -87,7 +87,7 @@ public class CheckoutTest {
     public void checkedOutBooksShouldNoLongerBeListed()
     {
 
-        BooklistWindow booklistWindow = new BooklistWindow();
+        BooklistWindow booklistWindow = new BooklistWindow("111-1111");
         ArrayList<Item> booklist  = new ArrayList<Item>();
 
         Book toCheckout =  new Book("title2", "author2", 2002);
@@ -112,7 +112,7 @@ public class CheckoutTest {
     public void displayCheckoutSuccessScreenAfterSuccessfulCheckout()
     {
         IOManager m = new IOManager();
-        BooklistWindow booklistWindow = new BooklistWindow();
+        BooklistWindow booklistWindow = new BooklistWindow("111-1111");
         m.currentWindow = booklistWindow;
         m.putInput("checkout Harry Potter");
 
@@ -125,7 +125,7 @@ public class CheckoutTest {
     public void displayCheckoutFailureScreenIfBookNotAvailable()
     {
         IOManager m = new IOManager();
-        BooklistWindow booklistWindow = new BooklistWindow();
+        BooklistWindow booklistWindow = new BooklistWindow("111-1111");
         m.currentWindow = booklistWindow;
         m.putInput("checkout Lord of the Rings");
 

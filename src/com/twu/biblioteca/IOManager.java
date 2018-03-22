@@ -8,7 +8,7 @@ public class IOManager {
     public int numWaitingOutputs = 0;
 
 
-    public String currentUser;
+    public String currentUser = null;
 
     public IOManager()
     {
@@ -26,7 +26,7 @@ public class IOManager {
         //do side effects
         if (currentWindow instanceof WelcomeWindow)
         {
-            currentWindow = new MainMenuWindow();
+            currentWindow = new MainMenuWindow(currentUser);
             numWaitingOutputs++;
         }
 

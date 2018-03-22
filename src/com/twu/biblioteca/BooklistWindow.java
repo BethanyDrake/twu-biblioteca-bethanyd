@@ -18,8 +18,9 @@ public class BooklistWindow extends ItemListWindow {
 
     }
 
-    public BooklistWindow() {
+    public BooklistWindow(String user) {
 
+        super (user);
         setDefaultBooklist();
 
     }
