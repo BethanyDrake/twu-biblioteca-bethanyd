@@ -7,11 +7,14 @@ public abstract class Window
     String text;
 
 
+
     public Window()
     {
 
 
     }
+
+
 
 
     public String getText() {

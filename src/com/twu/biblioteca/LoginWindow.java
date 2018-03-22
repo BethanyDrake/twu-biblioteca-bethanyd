@@ -2,7 +2,10 @@ package com.twu.biblioteca;
 
 public class LoginWindow extends Window {
 
+    public boolean isLoggedIn;
     public boolean enteredLibraryNumber = false;
+    public String libraryNumber;
+
     public LoginWindow()
     {
 
@@ -14,8 +17,9 @@ public class LoginWindow extends Window {
     {
         if( enteredLibraryNumber)
         {
-
-            return new MessageWindow(new MainMenuWindow(), "Successful login!");
+            isLoggedIn = true;
+            setText("Successful login!");
+            return this;
         }
 
 
@@ -23,6 +27,7 @@ public class LoginWindow extends Window {
         {
             setText("Enter password: ");
             enteredLibraryNumber = true;
+            libraryNumber = input;
             return this;
         }
 

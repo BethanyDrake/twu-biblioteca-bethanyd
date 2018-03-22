@@ -10,6 +10,7 @@ import static org.junit.Assert.assertFalse;
 public class AccountsTest {
 
 
+
     @Test
     public void canLoginFromAccountWindow()
     {
@@ -46,6 +47,9 @@ public class AccountsTest {
 
     }
 
+    /*
+
+
     @Test public void libraryNumbersOfIncorrectLengthAreInvalid()
     {
         IOManager m = new IOManager();
@@ -57,6 +61,7 @@ public class AccountsTest {
         assertTrue(m.currentWindow instanceof InvalidInputError);
 
     }
+
 
     @Test public void libraryNumbersWithIncorrectHyphenPlacementAreInvalid()
     {
@@ -70,6 +75,7 @@ public class AccountsTest {
 
     }
 
+
     @Test public void nonNumericLibraryNumbersAreInvalid()
     {
         IOManager m = new IOManager();
@@ -82,6 +88,7 @@ public class AccountsTest {
 
     }
 
+    */
     @Test
     public void afterEnteringAccountNumberOnlyCorrectPasswordsAreValid()
     {
@@ -95,6 +102,38 @@ public class AccountsTest {
         assertFalse(m.currentWindow instanceof InvalidInputError);
 
     }
+
+
+    @Test
+    public void userInformationOptionIsNotAvailableIfNotLoggedIn()
+    {
+        IOManager m = new IOManager();
+        m.currentWindow = new AccountsWindow();
+        String output = m.getOutput();
+        assertEquals("(1) Login\n", output);
+
+    }
+
+    @Test
+    public void userInformationOptionIsAvailableIfLoggedIn()
+    {
+        IOManager m = new IOManager();
+        m.currentWindow = new AccountsWindow();
+        m.getOutput();
+        m.putInput("1");
+        m.getOutput();
+        m.putInput("111-1111");
+        m.getOutput();
+        m.putInput("password");
+        m.getOutput();
+        m.getOutput();
+        m.putInput("3");
+        String output = m.getOutput();
+
+        assertEquals("(1) Login\n(2) Account information\n", output);
+
+    }
+
 
 
 

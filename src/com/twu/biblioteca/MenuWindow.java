@@ -7,12 +7,7 @@ public class MenuWindow extends Window {
     public ArrayList<Option> options;
 
 
-    public MenuWindow()
-    {
 
-
-
-    }
 
 
     public void setText()

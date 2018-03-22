@@ -8,6 +8,8 @@ public class IOManager {
     public int numWaitingOutputs = 0;
 
 
+    public String currentUser;
+
     public IOManager()
     {
         currentWindow =  new WelcomeWindow();
@@ -17,8 +19,6 @@ public class IOManager {
 
     public String getOutput()
     {
-
-
 
 
         String output = currentWindow.getText();
@@ -41,10 +41,24 @@ public class IOManager {
             System.exit(0);
         }
 
+        else if (currentWindow instanceof LoginWindow)
+        {
+            LoginWindow loginWindow = ((LoginWindow) currentWindow);
+
+            if (loginWindow.isLoggedIn)
+            {
+                currentUser = loginWindow.libraryNumber;
+                currentWindow = new MainMenuWindow(currentUser);
+                numWaitingOutputs++;
+
+            }
+        }
+
         numWaitingOutputs--;
         return output;
-    }
 
+
+    }
 
 
     public void putInput(String input)
