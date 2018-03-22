@@ -4,17 +4,19 @@ import java.util.ArrayList;
 
 public class MenuWindow extends Window {
 
-    private ArrayList<Option> options;
+    public ArrayList<Option> options;
 
 
     public MenuWindow()
     {
 
+        /*
         options = new ArrayList<Option>();
         options.add(new Option("List Books", new BooklistWindow()));
         options.add(new Option("List Movies", new MovieListWindow()));
-        options.add(new Option("Accounts", new AccountsWindow()));
+        //options.add(new Option("Accounts", new AccountsWindow()));
         setText();
+        */
 
     }
 
