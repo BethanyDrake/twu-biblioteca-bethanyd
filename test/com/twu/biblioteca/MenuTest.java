@@ -16,7 +16,7 @@ public class MenuTest {
     public void mainMenuShouldDisplayOListBooksAndListMoviesOption()
     {
         MainMenuWindow mainMenuWindow = new MainMenuWindow();
-        String expected = "(1) List Books\n(1) List Movies\n";
+        String expected = "(1) List Books\n(2) List Movies\n(3) Accounts\n";
         assertEquals(expected,mainMenuWindow.getText());
 
     }
@@ -41,6 +41,16 @@ public class MenuTest {
         m.putInput("2");
         assertTrue(m.currentWindow instanceof MovieListWindow);
 
+
+    }
+
+    @Test
+    public void fromMainMenuCanGoToAccountsWindow()
+    {
+        IOManager m = new IOManager();
+        m.currentWindow = new MainMenuWindow();
+        m.putInput("3");
+        assertTrue(m.currentWindow instanceof AccountsWindow);
 
     }
 

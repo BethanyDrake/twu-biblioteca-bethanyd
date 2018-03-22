@@ -22,7 +22,6 @@ public class BooklistWindow extends ItemListWindow {
 
         setDefaultBooklist();
 
-
     }
 
     /*
