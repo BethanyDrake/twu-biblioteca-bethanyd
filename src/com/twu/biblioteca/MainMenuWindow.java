@@ -40,6 +40,18 @@ public class MainMenuWindow extends Window{
     @Override
     public Window putInput(String input)
     {
+
+        if (isNumeric(input))
+        {
+            int optionSelected = Integer.parseInt(input);
+
+            if (optionSelected <= options.size())
+            {
+                return (options.get(optionSelected-1).toOpen);
+            }
+
+        }
+        /*
         if (isNumeric(input))
         {
             int optionSelected = Integer.parseInt(input);
@@ -56,6 +68,7 @@ public class MainMenuWindow extends Window{
             }
 
         }
+        */
         return super.putInput(input);
     }
 

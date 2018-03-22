@@ -10,8 +10,6 @@ public class BibliotecaApp {
         IOManager manager = new IOManager();
         Scanner sc = new Scanner(System.in);
 
-
-
         while (true)
         {
             while (manager.numWaitingOutputs > 0)
@@ -22,10 +20,7 @@ public class BibliotecaApp {
             String input = sc.nextLine();
             manager.putInput(input);
 
-
         }
-
-
 
     }
 
